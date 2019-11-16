@@ -77,7 +77,13 @@
 
             for (var i=0; i < userSpecialChars.filter(Boolean).length; i++) {
                 passwordRequireArray.push(theSet[i][Math.floor(Math.random()*theSet[i].length)]);
-            }
+            };
+
+            var passwordRestOfArray = [];
+            var theSetArray = theSet.flat(); 
+            for (var i=0; i < userPasswordLength-passwordRequireArray.length; i++) {
+                passwordRestOfArray.push(theSetArray[Math.floor(Math.random()*theSetArray.length)]);
+            };
 
             
 
