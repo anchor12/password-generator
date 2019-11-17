@@ -23,6 +23,7 @@
     </div>
     <script>
         document.getElementById("copy").disabled = true; //disable button on page load as no password generated yet
+        
         function passwordLength() { //gets users password length choice through prompt
             var passwordLengthChoice = prompt("Choose a password length between 8 and 128");
             var intPasswordLengthChoice = parseInt(passwordLengthChoice); //converts users input to int if possible
@@ -32,11 +33,11 @@
             else if ((!((intPasswordLengthChoice >= 8) && (intPasswordLengthChoice <= 128))) //makes sure password length min/max length is upheld
                 || (typeof (intPasswordLengthChoice) !== "number")) { //checks if user input is actual number
                 alert("Please choose a number between 8 and 128!");
-                passwordLength(); //re-run function if user input is invalid
+                return passwordLength(); //re-run function if user input is invalid
             }
 
             else {
-                return passwordLengthChoice;
+                return intPasswordLengthChoice;
             }
         };
 
