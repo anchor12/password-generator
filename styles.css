@@ -5,6 +5,7 @@ h1,h2 {
 h1 {
     margin-bottom: 100px;
     text-align: center;
+    
 }
 
 h2 {
@@ -104,7 +105,7 @@ margin-right: 20px;
   /* Center Button */
   
   #copy {
-  margin-right: 20px; /*fix this to be more center*/
+  margin-right: 20px; 
   margin-left: 20px;
   }
   
