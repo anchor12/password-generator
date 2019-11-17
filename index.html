@@ -15,46 +15,48 @@
     <h2>Generate a Password</h2>
     <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
     <button id="generate" onclick="generatePassword()">Generate Password</button>
-    <button id="copy">
+    <button id="copy" onclick="copyToClipboard()">
         Copy to Clipboard
     </button>
     <script>
-        function passwordLength() {
+
+        function passwordLength() { //gets users password length choice through prompt
             var passwordLengthChoice = prompt("Choose a password length between 8 and 128");
-            var intPasswordLengthChoice = parseInt(passwordLengthChoice);
+            var intPasswordLengthChoice = parseInt(passwordLengthChoice); //converts users input to int if possible
             if (passwordLengthChoice === null) {
 
             }
-            else if ((!(intPasswordLengthChoice >= 8) && (intPasswordLengthChoice <= 128))
-                || (typeof (intPasswordLengthChoice) !== "number")) {
+            else if ((!(intPasswordLengthChoice >= 8) && (intPasswordLengthChoice <= 128)) //makes sure password length min/max length is upheld
+                || (typeof (intPasswordLengthChoice) !== "number")) { //checks if user input is actual number
                 alert("Please choose a number between 8 and 128!");
-                passwordLength();
+                passwordLength(); //re-run function if user input is invalid
             }
 
             else {
-                return passwordLengthChoice;
+                return passwordLengthChoice; 
             }
         };
 
-        var charTypes = ["special", "numeric", "lowercase", "uppercase"];
+        var charTypes = ["special", "numeric", "lowercase", "uppercase"]; //possible character types for password
 
 
         function specialChars() {
             var userCharChoice = [];
-
+            //for loop creates array of boolean values pertaining to which char types user has chosen to include
+            //in their password
             for (var i = 0; i < charTypes.length; i++) {
                 userCharChoice.push(confirm(`Would you like to add ${charTypes[i]} characters?`));
             }
-
-            if (userCharChoice.filter(Boolean).length === 0) {
+            //if userCharChoice array contains all false values then re-run function
+            if (userCharChoice.filter(Boolean).length === 0) { 
                 alert("You must select at least one character type to include in your password!")
-                specialChars();
+                specialChars(); 
             }
 
             return userCharChoice;
         };
 
-        function shuffle(array) {
+        function shuffle(array) { //shuffle function shuffles all elements in password array
 
             var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -79,8 +81,7 @@
         function generatePassword() {
             var userPasswordLength = passwordLength();
             var userSpecialChars = specialChars();
-            console.log("got the userSpecialChars");
-            console.log(userSpecialChars);
+            
 
             var alphabetLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
                 "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -92,32 +93,39 @@
 
             var specialCharsList = ["$", "!", "@", "#", "%", "&", "*", "_", "~", ")", "(", "+", ",", "?", "/", "]", "[", "{", "}", "^", "<", ">"];
 
+            //array of possible character types user has specified
             var theSet = [specialCharsList, numbers,
                 alphabetLowerCase, alphabetUpperCase].filter((d, index) => userSpecialChars[index]);
             console.log(theSet);
 
             var passwordRequireArray = [];
 
+            //gets array of the required character types to include in password so at least one of each is included
             for (var i = 0; i < userSpecialChars.filter(Boolean).length; i++) {
                 passwordRequireArray.push(theSet[i][Math.floor(Math.random() * theSet[i].length)]);
             };
 
             var passwordRestOfArray = [];
-            var theSetArray = theSet.flat();
+            var theSetArray = theSet.flat(); //turns array of array into one large array
+
+            //remaining characters in password get filled with random characters from theSet
             for (var i = 0; i < userPasswordLength - passwordRequireArray.length; i++) {
                 passwordRestOfArray.push(theSetArray[Math.floor(Math.random() * theSetArray.length)]);
             };
-
+            //random shuffle the elements of password array
             var newPassword = shuffle(passwordRequireArray.concat(passwordRestOfArray)).join("");
 
-            console.log(newPassword);
-            document.getElementById("password").innerHTML = newPassword;
+            //prints new password array in textarea
+            document.getElementById("password").value = newPassword;
 
+        };
 
-
-
-
-
+        function copyToClipboard() {
+            
+            document.body.appendChild(document.getElementById("password"));
+            document.getElementById("password").select();
+            document.execCommand('copy');
+            
         };
 
 
