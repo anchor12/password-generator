@@ -37,9 +37,10 @@
         };
 
         var charTypes = ["special", "numeric", "lowercase", "uppercase"];
-        var userCharChoice = [];
+        
 
         function specialChars() {
+            var userCharChoice = [];
 
             for (var i = 0; i < charTypes.length; i++) {
                 userCharChoice.push(confirm(`Would you like to add ${charTypes[i]} characters?`));
@@ -53,11 +54,33 @@
             return userCharChoice;
         };
 
+        function shuffle(array) {
+
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        }
+
 
 
         function generatePassword() {
             var userPasswordLength = passwordLength();
             var userSpecialChars = specialChars();
+            console.log("got the userSpecialChars");
+            console.log(userSpecialChars);
 
             var alphabetLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
                 "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -69,23 +92,28 @@
 
             var specialCharsList = ["$", "!", "@", "#", "%", "&", "*", "_", "~"];
 
-            var theSet = [specialCharsList, numbers, 
-                alphabetLowerCase, alphabetUpperCase].filter((d,index) => userSpecialChars[index]);
-                console.log(theSet);
+            var theSet = [specialCharsList, numbers,
+                alphabetLowerCase, alphabetUpperCase].filter((d, index) => userSpecialChars[index]);
+            console.log(theSet);
 
             var passwordRequireArray = [];
 
-            for (var i=0; i < userSpecialChars.filter(Boolean).length; i++) {
-                passwordRequireArray.push(theSet[i][Math.floor(Math.random()*theSet[i].length)]);
+            for (var i = 0; i < userSpecialChars.filter(Boolean).length; i++) {
+                passwordRequireArray.push(theSet[i][Math.floor(Math.random() * theSet[i].length)]);
             };
 
             var passwordRestOfArray = [];
-            var theSetArray = theSet.flat(); 
-            for (var i=0; i < userPasswordLength-passwordRequireArray.length; i++) {
-                passwordRestOfArray.push(theSetArray[Math.floor(Math.random()*theSetArray.length)]);
+            var theSetArray = theSet.flat();
+            for (var i = 0; i < userPasswordLength - passwordRequireArray.length; i++) {
+                passwordRestOfArray.push(theSetArray[Math.floor(Math.random() * theSetArray.length)]);
             };
 
-            passwordRequireArray.concat(passwordRestOfArray);
+            var newPassword = shuffle(passwordRequireArray.concat(passwordRestOfArray)).join("");
+
+            console.log(newPassword);
+
+
+
 
 
         };
