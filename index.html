@@ -27,7 +27,7 @@
             if (passwordLengthChoice === null) {
 
             }
-            else if ((!(intPasswordLengthChoice >= 8) && (intPasswordLengthChoice <= 128)) //makes sure password length min/max length is upheld
+            else if ((!((intPasswordLengthChoice >= 8) && (intPasswordLengthChoice <= 128))) //makes sure password length min/max length is upheld
                 || (typeof (intPasswordLengthChoice) !== "number")) { //checks if user input is actual number
                 alert("Please choose a number between 8 and 128!");
                 passwordLength(); //re-run function if user input is invalid
