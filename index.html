@@ -90,6 +90,10 @@
 
         function generatePassword() {
             var userPasswordLength = passwordLength();
+
+            if (userPasswordLength === undefined) { //if user cancels the password length prompt, return nothing
+                return;
+            }
             var userSpecialChars = specialChars();
 
 
@@ -126,15 +130,15 @@
 
             //prints new password array in textarea
             document.getElementById("password").value = newPassword;
-            if (document.getElementById("password").value !== "") { 
+            if (document.getElementById("password").value !== "") {
                 document.getElementById("copy").disabled = false; //enable copy to clipboard button after password generated
                 document.getElementById("copy").id = "copyActive"; //change copy button id so that new styles can be added - goes from grayed out to blue
             }
             else {
-                document.getElementById("copyActive").disabled = true; 
+                document.getElementById("copyActive").disabled = true;
                 document.getElementById("copyActive").id = "copy";
             }
-                 
+
 
         };
 
