@@ -15,7 +15,7 @@
     </header>
     <h2>Generate a Password</h2>
     <div class="textbox">
-    <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
+        <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
     </div>
     <div class="buttonCollection">
         <button id="generate" onclick="generatePassword()">Generate Password</button>
@@ -25,7 +25,7 @@
     </div>
     <script>
         document.getElementById("copy").disabled = true; //disable button on page load as no password generated yet
-        
+
         function passwordLength() { //gets users password length choice through prompt
             var passwordLengthChoice = prompt("Choose a password length between 8 and 128");
             var intPasswordLengthChoice = parseInt(passwordLengthChoice); //converts users input to int if possible
@@ -55,8 +55,12 @@
             }
             //if userCharChoice array contains all false values then re-run function
             if (userCharChoice.filter(Boolean).length === 0) {
-                alert("You must select at least one character type to include in your password!")
-                specialChars();
+                if (confirm("You must select at least one character type to include in your password! Click OK to try again.")) {
+                    return specialChars();
+                }
+                else {
+                    //idk
+                }
             }
 
             return userCharChoice;
@@ -122,8 +126,15 @@
 
             //prints new password array in textarea
             document.getElementById("password").value = newPassword;
-            document.getElementById("copy").disabled = false; //enable copy to clipboard button after password generated
-            document.getElementById("copy").id = "copyActive"; //change copy button id so that new styles can be added - goes from grayed out to blue
+            if (document.getElementById("password").value !== "") { 
+                document.getElementById("copy").disabled = false; //enable copy to clipboard button after password generated
+                document.getElementById("copy").id = "copyActive"; //change copy button id so that new styles can be added - goes from grayed out to blue
+            }
+            else {
+                document.getElementById("copyActive").disabled = true; 
+                document.getElementById("copyActive").id = "copy";
+            }
+                 
 
         };
 
