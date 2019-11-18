@@ -4,8 +4,7 @@ h1,h2 {
 
 h1 {
     margin-bottom: 100px;
-    text-align: center;
-    
+    text-align: center; 
 }
 
 h2 {
@@ -25,57 +24,59 @@ textarea {
 }
 
 #generate {
+  display: inline-block;
+  width: 240px;
+  height: 70px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(rgb(247, 34, 34), rgb(116, 2, 2));
+  background-color: #ad1d1d;
+  border-radius: 35px;
+  border: 1px solid #9a0a00;
+  font: bold 22px Arial;
+  box-shadow: inset 0 2px 2px #e46d64, inset 1px 0 3px #dc392d,
+    inset -1px 0 3px #dc332d, inset 0 -2px 2px #d30f01,
+    0 0 3px rgba(0, 0, 0, 0.24);
+  position: relative;
+  text-shadow: 0 1px #88110d;
+  outline: none;
+}
 
-display: inline-block;
-width: 240px;
-height: 70px;
-box-sizing: border-box;
-text-align: center;
-color: #fff;
-text-decoration: none;
-background: linear-gradient(rgb(247, 34, 34), rgb(116, 2, 2));
-background-color: #ad1d1d;
-border-radius: 35px;
-border: 1px solid #9a0a00;
-font: bold 22px Arial;
-box-shadow: inset 0 2px 2px #e46d64, inset 1px 0 3px #dc392d,
-  inset -1px 0 3px #dc332d, inset 0 -2px 2px #d30f01,
-  0 0 3px rgba(0, 0, 0, 0.24);
-position: relative;
-text-shadow: 0 1px #88110d;
-outline: none;
-}
 #generate:before {
-content: "";
-position: absolute;
-top: -10px;
-left: -10px;
-width: 100%;
-height: 100%;
-padding: 10px;
-background: #d7d7d7;
-z-index: -1;
-border-radius: 50px;
-box-shadow: inset 0 1px 2px #bbb;
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background: #d7d7d7;
+  z-index: -1;
+  border-radius: 50px;
+  box-shadow: inset 0 1px 2px #bbb;
 }
+
 #generate:hover {
-background: linear-gradient(#d44944, #ad1a07);
-box-shadow: inset 0 1px 0 #f4a698, inset 0 2px 0 #ec9687,
-  inset 0 3px 0 #e68c7c, inset 0 5px 0 #e49875, inset 1px 0 3px #dc2d2d,
-  inset -1px 0 3px #dc392d, inset 0 -2px 2px #d32101,
-  0 0 3px rgba(0, 0, 0, 0.24);
+  background: linear-gradient(#d44944, #ad1a07);
+  box-shadow: inset 0 1px 0 #f4a698, inset 0 2px 0 #ec9687,
+    inset 0 3px 0 #e68c7c, inset 0 5px 0 #e49875, inset 1px 0 3px #dc2d2d,
+    inset -1px 0 3px #dc392d, inset 0 -2px 2px #d32101,
+    0 0 3px rgba(0, 0, 0, 0.24);
 }
+
 #generate:active {
-background: linear-gradient(#bb4037, #9c1902);
-box-shadow: inset 0 3px 7px #7b0400;
-padding: 1px 0 0 1px;
+  background: linear-gradient(#bb4037, #9c1902);
+  box-shadow: inset 0 3px 7px #7b0400;
+  padding: 1px 0 0 1px;
 }
 
 /* Center Button */
 
 #generate {
-margin-left: 20px; 
-margin-right: 20px;
+  margin-left: 20px; 
+  margin-right: 20px;
 }
 
 #copy {
@@ -105,14 +106,13 @@ margin-right: 20px;
   /* Center Button */
   
   #copy {
-  margin-right: 20px; 
-  margin-left: 20px;
+    margin-right: 20px; 
+    margin-left: 20px;
   }
   
 
 
 #copyActive {
-
   display: inline-block;
   width: 240px;
   height: 70px;
@@ -131,8 +131,9 @@ margin-right: 20px;
   position: relative;
   text-shadow: 0 1px #0f0d88;
   outline: none;
-  }
-  #copyActive:before {
+}
+
+#copyActive:before {
   content: "";
   position: absolute;
   top: -10px;
@@ -144,25 +145,27 @@ margin-right: 20px;
   z-index: -1;
   border-radius: 50px;
   box-shadow: inset 0 1px 2px rgb(187, 187, 187);
-  }
-  #copyActive:hover {
+}
+
+#copyActive:hover {
   background: linear-gradient(#5244d4, #1207ad);
   box-shadow: inset 0 1px 0 #a198f4, inset 0 2px 0 #8e87ec,
     inset 0 3px 0 #7e7ce6, inset 0 5px 0 #7775e4, inset 1px 0 3px #472ddc,
     inset -1px 0 3px #392ddc, inset 0 -2px 2px #0501d3,
     0 0 3px rgba(0, 0, 0, 0.24);
-  }
-  #copyActive:active {
+}
+
+#copyActive:active {
   background: linear-gradient(#4037bb, #05029c);
   box-shadow: inset 0 3px 7px #08007b;
   padding: 1px 0 0 1px;
-  }
+}
   
   /* Center Button */
   
-  #copyActive {
+#copyActive {
   margin-right: 20px; /*fix this to be more center*/
   margin-left: 20px;
-  }
+}
   
   
